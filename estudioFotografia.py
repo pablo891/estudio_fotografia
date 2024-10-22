@@ -62,9 +62,10 @@ class SessaoFotografia:
 
         conexao.commit()
 
-        print(consulta.rowcount, ' sessão deletada.')
+        print(f'A sessão foi deletada com sucesso')
+        
 
-        conexao.close()
+
     
     def atualizarSessao(self,tipo, id):
         conexao = self.conexao()
