@@ -15,7 +15,7 @@ class SessaoFotografia:
         ''' 
         consulta.execute(tabela)
         return conexao
-    
+
     def cadastrarSessao(self, cliente, data, tipo, preco):
         conexao = self.conexao() 
 
@@ -27,8 +27,8 @@ class SessaoFotografia:
         consulta.execute(sql, campos)
 
         conexao.commit()
-
-        print('cadastro realizado com sucesso!')
+        print("-"  * 50)
+        print('Cadastro realizado com sucesso!')
 
         conexao.close()
 
@@ -42,11 +42,14 @@ class SessaoFotografia:
         resultado = consulta.fetchall()
 
         for itens in resultado:
-            print(f'ID: {itens[0]}',end=' | ')
-            print(f'Cliente: {itens[1]}',end=' | ')
-            print(f'Data: {itens[2]}',end=' | ')
-            print(f'Tipo: {itens[3]}',end=' | ')
-            print(f'Preço: {itens[4]}')
+            if resultado == 0:
+                print('Nenhuma sessão cadastrada')
+            else:
+                print(f'ID: {itens[0]}',end=' | ')
+                print(f'Cliente: {itens[1]}',end=' | ')
+                print(f'Data: {itens[2]}',end=' | ')
+                print(f'Tipo: {itens[3]}',end=' | ')
+                print(f'Preço: {itens[4]}')
     
     def deletarSessao(self, id):
         conexao = self.conexao()
@@ -78,6 +81,7 @@ class SessaoFotografia:
         print(consulta.rowcount, ' linha(s) atualizada(s) com sucesso')
 
         conexao.close()
+
     
     def consultarSessaoIndividual(self, id):
         conexao = self.conexao()
