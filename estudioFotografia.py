@@ -21,6 +21,7 @@ class SessaoFotografia:
 
         sql = 'INSERT INTO sessao VALUES (?,?,?,?,?)'
 
+
         campos = (None, cliente, data, tipo, preco)
 
         consulta = conexao.cursor()
@@ -29,8 +30,7 @@ class SessaoFotografia:
         conexao.commit()
         print("-"  * 50)
         print('Cadastro realizado com sucesso!')
-
-        conexao.close()
+        
 
     def consultarSessoes(self):
         conexao = self.conexao()
